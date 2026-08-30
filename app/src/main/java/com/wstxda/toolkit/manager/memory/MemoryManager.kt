@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 class MemoryManager(context: Context) {
 
@@ -76,7 +77,7 @@ class MemoryManager(context: Context) {
         pollingJob = managerScope.launch {
             updateData()
             while (isActive) {
-                delay(REFRESH_RATE_MS)
+                delay(REFRESH_RATE_MS.milliseconds)
                 updateData()
             }
         }

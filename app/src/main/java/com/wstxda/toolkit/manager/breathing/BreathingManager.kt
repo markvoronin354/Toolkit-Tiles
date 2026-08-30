@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlin.math.ceil
+import kotlin.time.Duration.Companion.milliseconds
 
 class BreathingManager(context: Context) {
 
@@ -85,7 +86,7 @@ class BreathingManager(context: Context) {
             if (currentCoroutineContext().isActive) {
                 _breathingState.value = BreathingData(phase, currentProgress, secondsLeft)
             }
-            delay(FRAME_RATE_MS)
+            delay(FRAME_RATE_MS.milliseconds)
         }
     }
 

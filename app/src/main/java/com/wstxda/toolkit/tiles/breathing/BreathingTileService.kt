@@ -10,6 +10,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 class BreathingTileService : BaseTileService() {
 
@@ -32,7 +33,7 @@ class BreathingTileService : BaseTileService() {
     override fun onStopListening() {
         super.onStopListening()
         visibilityJob = serviceScope.launch {
-            delay(3000L)
+            delay(3000L.milliseconds)
             val currentState = breathingManager.breathingState.value.phase
             if (currentState != BreathingPhase.IDLE) {
                 breathingManager.stop()

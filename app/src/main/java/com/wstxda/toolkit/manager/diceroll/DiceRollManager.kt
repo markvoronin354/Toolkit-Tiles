@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlin.random.Random
+import kotlin.time.Duration.Companion.milliseconds
 
 class DiceRollManager(context: Context) {
 
@@ -38,7 +39,7 @@ class DiceRollManager(context: Context) {
             for (i in 0 until 12) {
                 _currentRoll.value = Random.nextInt(1, 7)
                 haptics.low()
-                delay(60L + (i * 30))
+                delay((60L + (i * 30)).milliseconds)
             }
 
             _currentRoll.value = finalRoll

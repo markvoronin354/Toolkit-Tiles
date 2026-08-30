@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 class TemperatureManager(context: Context) {
 
@@ -42,7 +43,7 @@ class TemperatureManager(context: Context) {
         if (pollingJob?.isActive == true) return
         pollingJob = managerScope.launch {
             while (isActive) {
-                delay(REFRESH_RATE_MS)
+                delay(REFRESH_RATE_MS.milliseconds)
                 updateData()
             }
         }

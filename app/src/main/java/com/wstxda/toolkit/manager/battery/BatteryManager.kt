@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 class BatteryManager(context: Context) {
 
@@ -98,7 +99,7 @@ class BatteryManager(context: Context) {
 
                 val delayTime =
                     if (info.isCharging) REFRESH_RATE_CHARGING_MS else REFRESH_RATE_DISCHARGING_MS
-                delay(delayTime)
+                delay(delayTime.milliseconds)
             }
         }
     }
